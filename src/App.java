@@ -7,12 +7,14 @@ public class App {
         boolean upTime = true;
         ArrayList<Admin> adminsList = new ArrayList<Admin>();
         ArrayList<User> usersList = new ArrayList<User>();
+        ArrayList<Book> booksList = new ArrayList<Book>();
         String loginInput;
         String username;
         String password;
 
         fetchAdmins(adminsList);    //for(Admin a: adminsList){System.out.println(a.toString());}
         fetchUsers(usersList);
+        fetchBooks(booksList);
 
         System.out.println("Welcome. (Press 0 anytime to exit)\n");
 
@@ -32,7 +34,8 @@ public class App {
                 if(check)
                 {
                     boolean adminUpTime = true;
-                    while(adminUpTime){
+                    while(adminUpTime)
+                    {
                         System.out.println("\nAdmin Section\nAdd User(1)\nView Users(2)\nDelete User(3)\nLogout(4)");
                         String input = in.nextLine();
                         if(input.equals("1"))       
@@ -74,7 +77,7 @@ public class App {
                         }
                         else if(input.equals("4"))  {break;}
                         else if(input.equals("0"))  {upTime = false; break;}
-                        else{System.out.println("Invalid command. Please try again.");}
+                        else                        {System.out.println("Invalid command. Please try again.");}
                     }
                 }
                 else
@@ -92,8 +95,21 @@ public class App {
 
                 if(check)
                 {
-                    System.out.println("\nWelcome!");
-
+                    boolean userUpTime = true;
+                    while(userUpTime)
+                    {
+                        System.out.println("\nUser Section\nAdd Books(1)\nView Books(2)\nIssue Book(3)\nView Issued Books(4)\nReturn Book(5)\nLogout(6)");
+                        String input = in.nextLine();
+                        
+                        if(input.equals("1"))       {}
+                        else if(input.equals("2"))  {for(Book b: booksList){ System.out.println(b.toString()); }}
+                        else if(input.equals("3"))  {}
+                        else if(input.equals("4"))  {}
+                        else if(input.equals("5"))  {}
+                        else if(input.equals("6"))  {break;}
+                        else if(input.equals("0"))  {upTime = false; break;}
+                        else                        {System.out.println("Invalid command. Please try again.");}
+                    }
                 }
                 else
                 {
@@ -210,5 +226,21 @@ public class App {
             }
         }
         return max;
+    }
+
+    public static void fetchBooks(ArrayList<Book> booksList)
+    {
+        // DATABASE OF EXISTING USERS
+        Book book1 = new Book("1", "Book1", "authentication1", "publisher1", 10);
+        Book book2 = new Book("2", "Book2", "authentication2", "publisher2", 20);
+        Book book3 = new Book("3", "Book3", "authentication3", "publisher3", 30);
+        Book book4 = new Book("4", "Book4", "authentication4", "publisher4", 40);
+        Book book5 = new Book("5", "Book5", "authentication5", "publisher5", 50);
+        
+        booksList.add(book1);
+        booksList.add(book2);
+        booksList.add(book3);
+        booksList.add(book4);
+        booksList.add(book5);
     }
 }
