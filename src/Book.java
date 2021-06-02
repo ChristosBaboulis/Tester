@@ -12,6 +12,17 @@ public class Book
         this.quantity = quantity;
     }
 
+    public Book(Book b)
+    {
+        callNo = b.getCallNo();
+        name = b.getName();
+        authentication = b.getAuthentication();
+        publisher = b.getPublisher();
+        quantity = b.getQuantity();
+    }
+
+    public Book(){}
+
     public void setCallNo(String callNo)
     {
         this.callNo = callNo;
@@ -64,7 +75,16 @@ public class Book
 
     public String toString()
     {
-        return "Book's Call No: "+ getCallNo() + " Book's name: " + getName() + " Book's authentication: " + getAuthentication() + " Book's publisher: " 
-                + getPublisher() + " Book's quantity: "+ getQuantity();
+        return "Book's Call No: "+ getCallNo() + ", Book's name: " + getName() + ", Book's authentication: " + getAuthentication() + ", Book's publisher: " 
+                + getPublisher() + ", Book's quantity: "+ getQuantity();
+    }
+
+    public void copy(Book b)
+    {
+        callNo = b.getCallNo();
+        name = b.getName();
+        authentication = b.getAuthentication();
+        publisher = b.getPublisher();
+        quantity = b.getQuantity();
     }
 }

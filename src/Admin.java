@@ -30,6 +30,6 @@ public class Admin
 
     public String toString()
     {
-        return "Admin's username: " + getUsername() + "\nAdmin's password: " + getPassword();
+        return "Admin's username: " + getUsername() + ", Admin's password: " + getPassword();
     }
 }

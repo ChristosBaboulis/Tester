@@ -8,6 +8,9 @@ public class App {
         ArrayList<Admin> adminsList = new ArrayList<Admin>();
         ArrayList<User> usersList = new ArrayList<User>();
         ArrayList<Book> booksList = new ArrayList<Book>();
+        ArrayList<Student> studentsList = new ArrayList<Student>();
+        Map<Book, Student> issuedBooks = new HashMap<Book, Student>();
+
         String loginInput;
         String username;
         String password;
@@ -15,6 +18,7 @@ public class App {
         fetchAdmins(adminsList);    //for(Admin a: adminsList){System.out.println(a.toString());}
         fetchUsers(usersList);
         fetchBooks(booksList);
+        fetchStudents(studentsList);
 
         System.out.println("Welcome. (Press 0 anytime to exit)\n");
 
@@ -101,11 +105,110 @@ public class App {
                         System.out.println("\nUser Section\nAdd Books(1)\nView Books(2)\nIssue Book(3)\nView Issued Books(4)\nReturn Book(5)\nLogout(6)");
                         String input = in.nextLine();
                         
-                        if(input.equals("1"))       {}
+                        if(input.equals("1"))       
+                        {   
+                            boolean bookIdFlag = true;
+                            String callNo = "";
+                            while(bookIdFlag)
+                            {
+                                boolean bookIdFlag1 = true;
+                                System.out.println("Call No: ");
+                                callNo = in.nextLine();
+                                for(Book bit1: booksList) 
+                                { 
+                                    if ( callNo.equals( bit1.getCallNo() ) ) 
+                                    { 
+                                        System.out.println("ID already existing. Please use a new one.");
+                                        bookIdFlag1 = false; 
+                                        break; 
+                                    } 
+                                }
+                                if (bookIdFlag1 == true) { bookIdFlag = false; }
+                            }
+                            System.out.println("Name: ");
+                            String name = in.nextLine();
+                            System.out.println("Authentication: ");
+                            String authentication = in.nextLine();
+                            System.out.println("Publisher: ");
+                            String publisher = in.nextLine();
+                            System.out.println("Quantity: ");
+                            String quantity = in.nextLine();
+                            Book newBook = new Book(callNo, name, authentication, publisher, Integer.parseInt(quantity));
+                            booksList.add(newBook);
+                            System.out.println("Book Successfully added!");
+                        }
                         else if(input.equals("2"))  {for(Book b: booksList){ System.out.println(b.toString()); }}
-                        else if(input.equals("3"))  {}
-                        else if(input.equals("4"))  {}
-                        else if(input.equals("5"))  {}
+                        else if(input.equals("3"))  
+                        {
+                            boolean bookIdFlag = true;
+                            String issuedCallNo = "";
+                            while(bookIdFlag)
+                            {
+                                boolean bookIdFlag1 = true;
+                                System.out.println("Book Call No: ");
+                                issuedCallNo = in.nextLine();
+                                for(Book bit1: booksList) 
+                                { 
+                                    if ( issuedCallNo.equals( bit1.getCallNo() ) ) 
+                                    { 
+                                        bookIdFlag1 = false; 
+                                        break; 
+                                    } 
+                                }
+                                if (bookIdFlag1 == true) 
+                                { 
+                                    System.out.println("Book not found.");
+                                }
+                                else
+                                {
+                                    bookIdFlag = false;
+                                }
+                            }
+                            System.out.println("Student ID: ");
+                            String studentId = in.nextLine();
+                            System.out.println("Student Name: ");
+                            String studentName = in.nextLine();
+                            System.out.println("Student Contact: ");
+                            String studentContact = in.nextLine();
+                            Student s = new Student(Integer.parseInt(studentId), studentName, studentContact);
+                            Book b = new Book();
+                            for(Book bit: booksList){ if ( issuedCallNo.equals( bit.getCallNo() ) ) { b.copy(bit); break; } }
+                            
+                            if(b.getCallNo().equals(""))
+                            {
+                                System.out.println("Book not existing!");
+                            }
+                            else
+                            {
+                                issuedBooks.put(b, s);
+                                int temp = b.getQuantity();
+                                for(Book bit: booksList)
+                                { 
+                                    if ( b.getCallNo().equals( bit.getCallNo() ) ) 
+                                    { 
+                                        bit.setQuantity(temp - 1);
+                                        if(bit.getQuantity() == 0)
+                                        {
+                                            booksList.remove(bit);
+                                        }
+                                        break; 
+                                    } 
+                                }
+                                b.setQuantity(1);
+                                System.out.println("Book issued successfully!");
+                            }
+
+                        }
+                        else if(input.equals("4"))  { printMap(issuedBooks); }
+                        else if(input.equals("5"))  
+                        {
+                            System.out.println("Book Call No: ");
+                            String returnedCallNo = in.nextLine();
+                            System.out.println("Student ID: ");
+                            String studentId = in.nextLine();
+                            //findAndDeleteInMap(issuedBooks, returnedCallNo, studentId);
+                            
+                        }
                         else if(input.equals("6"))  {break;}
                         else if(input.equals("0"))  {upTime = false; break;}
                         else                        {System.out.println("Invalid command. Please try again.");}
@@ -243,4 +346,43 @@ public class App {
         booksList.add(book4);
         booksList.add(book5);
     }
+
+    public static void fetchStudents(ArrayList<Student> studentsList)
+    {
+        // DATABASE OF EXISTING USERS
+        Student student1 = new Student(1, "Student1", "123");
+        Student student2 = new Student(2, "Student2", "456");
+        Student student3 = new Student(3, "Student3", "789");
+        Student student4 = new Student(4, "Student4", "321");
+        Student student5 = new Student(5, "Student5", "765");
+        
+        studentsList.add(student1);
+        studentsList.add(student2);
+        studentsList.add(student3);
+        studentsList.add(student4);
+        studentsList.add(student5);
+    }
+
+    public static void printMap(Map mp)
+     {
+        Iterator it = mp.entrySet().iterator();
+        while (it.hasNext()) 
+        {
+            Map.Entry pair = (Map.Entry)it.next();
+            System.out.println(pair.getKey() + " = " + pair.getValue());
+        }
+    }
+
+    /*public static void findAndDeleteInMap(Map mp, String callNo, String studentId)
+    {
+        Iterator it = mp.entrySet().iterator();
+        while(it.hasNext())
+        {
+            Map.Entry pair = (Map.Entry)it.next();
+            if( mp.getKey().getCallNo().equals(callNo) && pair.getValue().equals(studentId) )
+            {
+                mp.remove(pair.getKey());
+            }
+        }
+    }*/
 }

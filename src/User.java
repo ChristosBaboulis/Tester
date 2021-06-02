@@ -86,7 +86,7 @@ public class User
 
     public String toString()
     {
-        return "User's ID: "+ getId() + " User's username: " + getUsername() + " User's password: " + getPassword() + " User's email: " 
-                + getEmail() + " User's address: "+ getAddress() + " User's city: " + getCity() + " User's contact: " + getContact();
+        return "User's ID: "+ getId() + ", User's username: " + getUsername() + ", User's password: " + getPassword() + ", User's email: " 
+                + getEmail() + ", User's address: "+ getAddress() + ", User's city: " + getCity() + ", User's contact: " + getContact();
     }
 }
