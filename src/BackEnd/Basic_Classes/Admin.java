@@ -1,3 +1,5 @@
+package BackEnd.Basic_Classes;
+
 public class Admin 
 {
     private String username, password;

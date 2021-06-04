@@ -1,7 +1,8 @@
+package GUI_FrontEnd;
+
 import javax.swing.*;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
-
 import java.awt.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener;
@@ -36,7 +37,7 @@ public class MainMenu extends JFrame
 
     public MainMenu()
     {
-        //CONTENT PANE CREATION
+        //FRAME & CONTENT PANE CREATION
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);
         contentPane = new JPanel();
@@ -48,7 +49,7 @@ public class MainMenu extends JFrame
         title.setFont(new Font("Tahoma", Font.PLAIN, 18));
         title.setForeground(Color.GRAY);
         
-        //CURRENT PANE'S BUTTONS CREATION
+        //BUTTONS CREATION
         JButton adminLogin, userLogin;
         adminLogin = new JButton("Admin Login");
         adminLogin.addActionListener
@@ -57,7 +58,8 @@ public class MainMenu extends JFrame
             {
                 public void actionPerformed(ActionEvent arg0)
                 {
-
+                    AdminMenu.main(new String[]{});
+                    frame.dispose();
                 }
             }    
         );
@@ -70,7 +72,8 @@ public class MainMenu extends JFrame
             {
                 public void actionPerformed(ActionEvent arg0)
                 {
-
+                    UserMenu.main(new String[]{});
+                    frame.dispose();
                 }
             }    
         );
