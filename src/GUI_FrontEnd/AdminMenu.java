@@ -68,6 +68,10 @@ public class AdminMenu extends JFrame
                 public void actionPerformed(ActionEvent e)
                 {
                     //BACKEND CODE
+                    
+                    //NEXT FRAME
+                    AdminMenu2.main(new String[] {});
+                    frame.dispose();
                 }
             }
         );
