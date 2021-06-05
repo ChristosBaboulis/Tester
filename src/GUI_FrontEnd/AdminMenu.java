@@ -2,6 +2,8 @@ package GUI_FrontEnd;
 
 import javax.swing.*;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
+
 import java.awt.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener;
@@ -111,8 +113,11 @@ public class AdminMenu extends JFrame
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap(187, Short.MAX_VALUE)
 					.addComponent(login, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
-					.addGap(151))
+					.addGap(157))
+                    .addGroup(gl_contentPane.createSequentialGroup()
+                    .addContainerGap(200, Short.MAX_VALUE)
                     .addComponent(back, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
+                    .addGap(169))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -128,8 +133,11 @@ public class AdminMenu extends JFrame
 						.addComponent(passwordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addComponent(login, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(80, Short.MAX_VALUE))
+					.addContainerGap(80, Short.MAX_VALUE)
+                    .addPreferredGap(ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                     .addComponent(back, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+                    .addGap(19)
+                )
 		);
 		contentPane.setLayout(gl_contentPane);
     }

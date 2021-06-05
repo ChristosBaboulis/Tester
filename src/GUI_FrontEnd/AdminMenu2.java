@@ -58,7 +58,8 @@ public class AdminMenu2 extends JFrame
             {
                 public void actionPerformed(ActionEvent e)
                 {
-
+                    AddUser.main(new String[] {});
+                    frame.dispose();
                 }
             }    
         );
