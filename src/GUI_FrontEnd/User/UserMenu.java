@@ -1,22 +1,21 @@
-package GUI_FrontEnd;
+package GUI_FrontEnd.User;
 
 import javax.swing.*;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
-
 import java.awt.*;
 import javax.swing.border.EmptyBorder;
+import GUI_FrontEnd.MainMenu;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.GroupLayout.Alignment;
 
-public class AdminMenu extends JFrame 
+public class UserMenu  extends JFrame
 {
-    static AdminMenu frame;
-    private JPanel contentPane;
+    static UserMenu frame;
+    private JLabel contentPane;
     private JTextField textField;
     private JPasswordField passwordField;
 
-    //ADMIN MENU FRAME LAUNCH
+    //USER MENU FRAME LAUNCH
     public static void main(String[] args)
     {
         EventQueue.invokeLater
@@ -27,7 +26,7 @@ public class AdminMenu extends JFrame
                 {
                     try
                     {
-                        frame = new AdminMenu();
+                        frame = new UserMenu();
                         frame.setVisible(true);
                     }
                     catch(Exception e)
@@ -39,21 +38,21 @@ public class AdminMenu extends JFrame
         );
     }
 
-    public AdminMenu()
+    public UserMenu()
     {
         //FRAME & CONTENT PANE CREATION
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);
-        contentPane = new JPanel();
+        contentPane = new JLabel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
 
         //TITLE MESSAGE CREATION
-        JLabel adminLoginForm = new JLabel("Admin Login Form");
-		adminLoginForm.setForeground(Color.GRAY);
-		adminLoginForm.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        JLabel userLoginForm = new JLabel("User Login");
+        userLoginForm.setForeground(Color.GRAY);
+		userLoginForm.setFont(new Font("Tahoma", Font.PLAIN, 18));
 
-        //USERNAME & PASSWORD TEXT FIELDS CREATION
+        //USER NAME & PASSWORD TEXT FIELDS CREATION
         JLabel enterName = new JLabel("Enter User Name: ");
         JLabel enterPassword = new JLabel("Enter Password: ");
 
@@ -69,13 +68,10 @@ public class AdminMenu extends JFrame
             {
                 public void actionPerformed(ActionEvent e)
                 {
-                    //BACKEND CODE
-                    
-                    //NEXT FRAME
-                    AdminMenu2.main(new String[] {});
+                    UserMenu2.main(new String[] {});
                     frame.dispose();
                 }
-            }
+            }    
         );
 
         JButton back = new JButton("Back");
@@ -88,7 +84,7 @@ public class AdminMenu extends JFrame
                     MainMenu.main(new String[]{});
                     frame.dispose();
                 }
-            }
+            }    
         );
 
         //CONTENT PANE'S CUSTOM LAYOUT CREATION
@@ -99,7 +95,7 @@ public class AdminMenu extends JFrame
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(124)
-							.addComponent(adminLoginForm))
+							.addComponent(userLoginForm))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(19)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -113,16 +109,13 @@ public class AdminMenu extends JFrame
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap(187, Short.MAX_VALUE)
 					.addComponent(login, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
-					.addGap(157))
-                    .addGroup(gl_contentPane.createSequentialGroup()
-                    .addContainerGap(200, Short.MAX_VALUE)
+					.addGap(151))
                     .addComponent(back, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
-                    .addGap(169))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addComponent(adminLoginForm)
+					.addComponent(userLoginForm)
 					.addGap(26)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(enterName)
@@ -133,12 +126,10 @@ public class AdminMenu extends JFrame
 						.addComponent(passwordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addComponent(login, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(80, Short.MAX_VALUE)
-                    .addPreferredGap(ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+					.addContainerGap(80, Short.MAX_VALUE))
                     .addComponent(back, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-                    .addGap(19)
-                )
 		);
 		contentPane.setLayout(gl_contentPane);
+
     }
 }

@@ -1,4 +1,4 @@
-package GUI_FrontEnd;
+package GUI_FrontEnd.Admin;
 
 import java.awt.EventQueue;
 import java.awt.event.ActionListener;

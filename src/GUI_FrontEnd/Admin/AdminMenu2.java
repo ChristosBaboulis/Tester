@@ -1,4 +1,4 @@
-package GUI_FrontEnd;
+package GUI_FrontEnd.Admin;
 
 import java.awt.EventQueue;
 import javax.swing.*;
@@ -72,7 +72,7 @@ public class AdminMenu2 extends JFrame
             {
                 public void actionPerformed(ActionEvent e)
                 {
-
+                    ViewUsers.main(new String[]{});
                 }
             }    
         );
@@ -85,7 +85,8 @@ public class AdminMenu2 extends JFrame
             {
                 public void actionPerformed(ActionEvent e)
                 {
-
+                    DeleteUser.main(new String[] {});
+                    frame.dispose();
                 }
             }    
         );

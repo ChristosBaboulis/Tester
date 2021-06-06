@@ -5,6 +5,10 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.*;
 import javax.swing.border.EmptyBorder;
+
+import GUI_FrontEnd.Admin.AdminMenu;
+import GUI_FrontEnd.User.UserMenu;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
