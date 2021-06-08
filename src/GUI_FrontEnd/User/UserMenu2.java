@@ -61,7 +61,8 @@ public class UserMenu2 extends JFrame
             {
                 public void actionPerformed(ActionEvent e)
                 {
-
+                    AddBooks.main(new String[] {});
+                    frame.dispose();
                 }
             }
         );
@@ -73,7 +74,7 @@ public class UserMenu2 extends JFrame
             {
                 public void actionPerformed(ActionEvent e)
                 {
-
+                    ViewBooks.main(new String[] {});
                 }
             }
         );
@@ -85,7 +86,8 @@ public class UserMenu2 extends JFrame
             {
                 public void actionPerformed(ActionEvent e)
                 {
-
+                    IssueBook.main(new String[] {});
+                    frame.dispose();
                 }
             }
         );
@@ -97,7 +99,20 @@ public class UserMenu2 extends JFrame
             {
                 public void actionPerformed(ActionEvent e)
                 {
+                    ViewIssuedBooks.main(new String[] {});
+                }
+            }
+        );
 
+        JButton returnBook = new JButton("Return Book");
+        returnBook.addActionListener
+        (
+            new ActionListener()
+            {
+                public void actionPerformed(ActionEvent e)
+                {
+                    ReturnBook.main(new String[] {});
+                    frame.dispose();
                 }
             }
         );
@@ -111,18 +126,6 @@ public class UserMenu2 extends JFrame
                 {
                     UserMenu.main(new String[] {});
                     frame.dispose();
-                }
-            }
-        );
-
-        JButton returnBook = new JButton("Return Book");
-        returnBook.addActionListener
-        (
-            new ActionListener()
-            {
-                public void actionPerformed(ActionEvent e)
-                {
-
                 }
             }
         );

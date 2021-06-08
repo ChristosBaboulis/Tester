@@ -9,6 +9,13 @@
             "name": "Launch MainMenu",
             "request": "launch",
             "mainClass": "GUI_FrontEnd.MainMenu",
+            "projectName": "Tester_5b6068f6"
+        },
+        {
+            "type": "java",
+            "name": "Launch MainMenu",
+            "request": "launch",
+            "mainClass": "GUI_FrontEnd.MainMenu",
             "projectName": "Tester_9a63c074"
         },
         {
